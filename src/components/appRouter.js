@@ -6,7 +6,7 @@ export const AppRouter = () => {
     return (
         <Routes>
             <Route index element={<Main/>}/>
-            <Route path="/journal" element={<Journal/>}/>
+            <Route path="journal" element={<Journal/>}/>
             <Route path="*" element={<Main/>}/>
         </Routes>
     );

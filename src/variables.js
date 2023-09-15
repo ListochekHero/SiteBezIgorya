@@ -1,5 +1,9 @@
 export const colors = {
     lightMode: {
+        action: {
+            selected: "#000000",
+            hover: "#234422",
+        },
         primary: {
             light: "#474554",
             main: "#929296",
@@ -14,6 +18,10 @@ export const colors = {
         },
     },
     darkMode: {
+        action: {
+            selected: "#ffffff",
+            hover: "#234422",
+        },
         primary: {
             light: "#fefefb",
             main: "#b6bacb",
