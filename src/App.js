@@ -3,6 +3,8 @@ import {useMemo, useState} from "react";
 import {colors} from "./variables";
 import {Brightness2, Brightness7} from "@mui/icons-material";
 import "./style/reset.css";
+import {AppRouter} from "./components/appRouter";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     const [mode, setMode] = useState("light");
@@ -24,11 +26,9 @@ function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container sx={{backgroundColor: "background.paper"}} maxWidth={false}>
-                <IconButton onClick={switchTheme}>
-                    {theme.palette.mode === "dark" ? <Brightness2/> : <Brightness7/>}
-                </IconButton>
-            </Container>
+            <BrowserRouter>
+                <AppRouter/>
+            </BrowserRouter>
         </ThemeProvider>
     );
 }
