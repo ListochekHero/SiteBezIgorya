@@ -16,6 +16,9 @@ export const colors = {
             dark: "#8f8d8f",
             contrastText: "#4d6560",
         },
+        background: {
+            footer: "#929296"
+        },
     },
     darkMode: {
         action: {
@@ -33,6 +36,9 @@ export const colors = {
             main: "#929296",
             dark: "#101010",
             contrastText: "#bcbcbc",
+        },
+        background: {
+            footer: "#272727",
         },
     },
 };
