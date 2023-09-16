@@ -1,15 +1,12 @@
-import {Container, styled, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
+import {MainContainer} from "../../components/UI/MainContainer";
 
 export const Main = () => {
     return (
-        <StyledContainer>
+        <MainContainer>
             <Typography>
                 MAIN
             </Typography>
-        </StyledContainer>
+        </MainContainer>
     );
 };
-
-const StyledContainer = styled(Container)(() => ({
-    flexGrow: "1",
-}));
