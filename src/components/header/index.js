@@ -4,8 +4,14 @@ import {Navigation} from "./navigation";
 import {Logo} from "./logo";
 
 export const Header = ({mode, setMode}) => {
+
+    const saveMode = () => {
+        window.localStorage.setItem("mode", mode === "light" ? "dark" : "light")
+    };
+
     const switchTheme = () => {
-        (mode === "light") ? setMode("dark") : setMode("light");
+        mode === "light" ? setMode("dark") : setMode("light");
+        saveMode();
     };
 
     return (

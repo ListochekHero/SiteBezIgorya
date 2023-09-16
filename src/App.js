@@ -6,7 +6,7 @@ import {AppRouter} from "./components/appRouter";
 import {BrowserRouter} from "react-router-dom";
 
 function App() {
-    const [mode, setMode] = useState("light");
+    const [mode, setMode] = useState(window.localStorage.getItem("mode") || "light");
 
     const getDesignTokens = (mode) => ({
         palette: {
