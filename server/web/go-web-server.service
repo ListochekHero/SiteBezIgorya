@@ -1,0 +1,13 @@
+[Unit]
+Description=Web server on Go
+After=network.target
+[Service]
+ExecStart=/home/listochekhero/Projects/SiteBezIgorya/web
+Type=simple
+WorkingDirectory=/home/listochekhero/Projects/SiteBezIgorya/
+Restart=always
+RestartSec=5s
+Slice=session.slice
+
+[Install]
+WantedBy=default.target
