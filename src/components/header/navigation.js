@@ -13,7 +13,7 @@ export const Navigation = () => {
                 </StyledLink>
             </ListItem>
             <ListItem>
-                <StyledLink to="journal">
+                <StyledLink to="/journal">
                     <ImportContacts/>
                     Журнал
                 </StyledLink>
