@@ -1,7 +1,7 @@
-import {MainContainer} from "../../components/UI/MainContainer";
+import {MainContainer} from "../../components/UI/mainContainer";
 import {FormControl, styled} from "@mui/material";
 import {Send} from "@mui/icons-material";
-import {LinkButton} from "../../components/UI/LinkButton";
+import {LinkButton} from "../../components/UI/linkButton";
 import {Input} from "./input";
 
 export const Login = () => {

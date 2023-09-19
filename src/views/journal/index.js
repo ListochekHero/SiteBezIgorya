@@ -1,7 +1,7 @@
 import {Typography} from "@mui/material";
-import {MainContainer} from "../../components/UI/MainContainer";
+import {MainContainer} from "../../components/UI/mainContainer";
 import {PostAdd} from "@mui/icons-material";
-import {LinkButton} from "../../components/UI/LinkButton";
+import {LinkButton} from "../../components/UI/linkButton";
 
 export const Journal = () => {
     return (

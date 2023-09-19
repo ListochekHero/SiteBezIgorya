@@ -1,5 +1,5 @@
 import {Typography} from "@mui/material";
-import {MainContainer} from "../../components/UI/MainContainer";
+import {MainContainer} from "../../components/UI/mainContainer";
 
 export const NewPost = () => {
     return (
