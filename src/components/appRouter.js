@@ -2,7 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import {Main} from "../views/main";
 import {Journal} from "../views/journal";
 import {NewPost} from "../views/newPost";
-import {Login} from "../views/Login";
+import {Login} from "../views/login";
 
 export const AppRouter = () => {
     return (
