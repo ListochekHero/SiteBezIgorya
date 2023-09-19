@@ -6,14 +6,13 @@ module.exports = {
     mode: "development",
     entry: "./src/index.js",
     output: {
-        path: path.resolve(__dirname, "static"),
+        path: path.resolve(__dirname, "dist"),
         filename: "[hash].bundle.js",
         clean: true,
-        publicPath: "static"
     },
     devServer: {
         static: {
-            directory: path.resolve(__dirname, "static")
+            directory: path.resolve(__dirname, "dist")
         },
         port: 3000,
         open: true,
@@ -41,7 +40,14 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "./public/index.html",
-            favicon: "./public/favicon.ico",
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "public/favicon.ico"),
+                    to: path.resolve(__dirname, "dist"),
+                },
+            ],
         }),
     ],
 };
