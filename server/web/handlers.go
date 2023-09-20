@@ -8,7 +8,7 @@ import (
 	"text/template"
 )
 
-func Main_Window_Handler(w http.ResponseWriter, r *http.Request) {
+func (app *application) mainWindowHandler(w http.ResponseWriter, r *http.Request) {
 	ts, err := template.ParseFiles("./ui/static/index.html")
 	if err != nil {
 		log.Println(err.Error())
@@ -22,7 +22,7 @@ func Main_Window_Handler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func ShowSomeJournal(w http.ResponseWriter, r *http.Request) {
+func (app *application) showSomeJournal(w http.ResponseWriter, r *http.Request) {
 
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil || id < 1 {
@@ -32,7 +32,7 @@ func ShowSomeJournal(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Отображение выбранной заметки с ID %d...", id)
 }
 
-func CreateSomeJournal(w http.ResponseWriter, r *http.Request) {
+func (app *application) createSomeJournal(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		w.Header().Set("Allow", http.MethodPost)
 		http.Error(w, "Метод запрещен!", http.StatusMethodNotAllowed)

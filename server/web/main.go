@@ -2,16 +2,24 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
+type application struct {
+	errorLog *log.Logger
+	infoLog  *log.Logger
+}
+
 func main() {
 
+	app := &application{}
+
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", Main_Window_Handler)
-	mux.HandleFunc("/journal", Main_Window_Handler)
-	mux.HandleFunc("/login", Main_Window_Handler)
-	mux.HandleFunc("/newPost", Main_Window_Handler)
+	mux.HandleFunc("/", app.mainWindowHandler)
+	mux.HandleFunc("/journal", app.mainWindowHandler)
+	mux.HandleFunc("/login", app.mainWindowHandler)
+	mux.HandleFunc("/newPost", app.mainWindowHandler)
 
 	fileServer := http.FileServer(http.Dir("./ui/static/"))
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
