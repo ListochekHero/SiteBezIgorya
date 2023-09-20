@@ -2,9 +2,9 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 )
 
@@ -17,7 +17,23 @@ func main() {
 	addr := flag.String("addr", ":9009", "Сетевой адрес HTTP")
 	flag.Parse()
 
-	app := &application{}
+	infoFile, fileerr := os.OpenFile("info.log", os.O_RDWR|os.O_CREATE, 0666)
+	if fileerr != nil {
+		log.Fatal(fileerr)
+	}
+	defer infoFile.Close()
+	errorFile, fileerr := os.OpenFile("error.log", os.O_RDWR|os.O_CREATE, 0666)
+	if fileerr != nil {
+		log.Fatal(fileerr)
+	}
+	defer errorFile.Close()
+	infoLog := log.New(infoFile, "INFO\t", log.Ldate|log.Ltime)
+	errorLog := log.New(errorFile, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+
+	app := &application{
+		errorLog: errorLog,
+		infoLog:  infoLog,
+	}
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", app.mainWindowHandler)
@@ -26,20 +42,19 @@ func main() {
 	mux.HandleFunc("/newPost", app.mainWindowHandler)
 
 	fileServer := http.FileServer(neuteredFileSystem{http.Dir("./ui/static/")})
-
+	mux.Handle("/static", http.NotFoundHandler())
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
 	srv := &http.Server{
-		Addr:    *addr,
-		Handler: mux,
+		Addr:     *addr,
+		ErrorLog: errorLog,
+		Handler:  mux,
 	}
 
-	fmt.Println("Server is running on :9009")
+	infoLog.Printf("Server is running on :%s\n", *addr)
 
 	err := srv.ListenAndServe()
-	if err != nil {
-		fmt.Printf("Error: %s\n", err)
-	}
+	errorLog.Fatal(err)
 }
 
 type neuteredFileSystem struct {
