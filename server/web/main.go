@@ -1,10 +1,15 @@
 package main
 
 import (
+	"context"
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
+
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type application struct {
@@ -12,7 +17,33 @@ type application struct {
 	infoLog  *log.Logger
 }
 
+func connectToMongoDB() (*mongo.Client, error) {
+	// З'єднання з базою даних MongoDB
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://goWebUser:gowebuser@localhost:27017/goWebDB"))
+	if err != nil {
+		return nil, err
+	}
+
+	// Перевірка з'єднання з базою даних
+	err = client.Ping(context.TODO(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Println("Connected to MongoDB!")
+	return client, nil
+}
+
 func main() {
+
+	client, mongoErr := connectToMongoDB()
+	if mongoErr != nil {
+		log.Fatal(mongoErr)
+		return
+	}
+
+	defer client.Disconnect(context.TODO())
+
 	addr := flag.String("addr", ":9009", "Сетевой адрес HTTP")
 	flag.Parse()
 
