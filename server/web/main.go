@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"path/filepath"
 )
 
 type application struct {
@@ -24,7 +25,8 @@ func main() {
 	mux.HandleFunc("/login", app.mainWindowHandler)
 	mux.HandleFunc("/newPost", app.mainWindowHandler)
 
-	fileServer := http.FileServer(http.Dir("./ui/static/"))
+	fileServer := http.FileServer(neuteredFileSystem{http.Dir("./ui/static/")})
+
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
 	srv := &http.Server{
@@ -38,4 +40,27 @@ func main() {
 	if err != nil {
 		fmt.Printf("Error: %s\n", err)
 	}
+}
+
+type neuteredFileSystem struct {
+	fs http.FileSystem
+}
+
+func (nfs neuteredFileSystem) Open(path string) (http.File, error) {
+	f, err := nfs.fs.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	s, err := f.Stat()
+	if s.IsDir() {
+		index := filepath.Join(path, "index2.html")
+		if _, err := nfs.fs.Open(index); err != nil {
+			closeErr := f.Close()
+			if closeErr != nil {
+				return nil, closeErr
+			}
+			return nil, err
+		}
+	}
+	return f, nil
 }
