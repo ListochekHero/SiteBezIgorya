@@ -19,7 +19,7 @@ type application struct {
 
 func connectToMongoDB() (*mongo.Client, error) {
 	// З'єднання з базою даних MongoDB
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://goWebUser:gowebuser@localhost:27017/goWebDB"))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://goWebUser:gowebus2er@localhost:27017/goWebDB"))
 	if err != nil {
 		return nil, err
 	}
@@ -36,29 +36,29 @@ func connectToMongoDB() (*mongo.Client, error) {
 
 func main() {
 
-	client, mongoErr := connectToMongoDB()
-	if mongoErr != nil {
-		log.Fatal(mongoErr)
-		return
-	}
-
-	defer client.Disconnect(context.TODO())
-
 	addr := flag.String("addr", ":9009", "Сетевой адрес HTTP")
 	flag.Parse()
 
-	infoFile, fileerr := os.OpenFile("info.log", os.O_RDWR|os.O_CREATE, 0666)
-	if fileerr != nil {
-		log.Fatal(fileerr)
+	infoFile, err := os.OpenFile("info.log", os.O_RDWR|os.O_CREATE, 0666)
+	if err != nil {
+		log.Fatal(err)
 	}
 	defer infoFile.Close()
-	errorFile, fileerr := os.OpenFile("error.log", os.O_RDWR|os.O_CREATE, 0666)
-	if fileerr != nil {
-		log.Fatal(fileerr)
+	errorFile, err := os.OpenFile("error.log", os.O_RDWR|os.O_CREATE, 0666)
+	if err != nil {
+		log.Fatal(err)
 	}
 	defer errorFile.Close()
 	infoLog := log.New(infoFile, "INFO\t", log.Ldate|log.Ltime)
 	errorLog := log.New(errorFile, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+
+	client, err := connectToMongoDB()
+	if err != nil {
+		errorLog.Fatal(err)
+		return
+	}
+
+	defer client.Disconnect(context.TODO())
 
 	app := &application{
 		errorLog: errorLog,
@@ -73,6 +73,6 @@ func main() {
 
 	infoLog.Printf("Server is running on :%s\n", *addr)
 
-	err := srv.ListenAndServe()
+	err = srv.ListenAndServe()
 	errorLog.Fatal(err)
 }
