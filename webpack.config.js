@@ -11,16 +11,6 @@ module.exports = {
         clean: true,
         publicPath: "static"
     },
-    devServer: {
-        static: {
-            directory: path.resolve(__dirname, "static")
-        },
-        port: 3000,
-        open: true,
-        hot: true,
-        compress: true,
-        historyApiFallback: true,
-    },
     module: {
         rules: [
             {
