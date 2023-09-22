@@ -3,15 +3,24 @@ import {FormControl, styled} from "@mui/material";
 import {Send} from "@mui/icons-material";
 import {LinkButton} from "../../components/UI/linkButton";
 import {Input} from "./input";
+import {useState} from "react";
+
+const defaultState = {login: "", password: ""};
 
 export const Login = () => {
+    const [verification, setVerification] = useState("false");
+    const [state, setState] = useState(defaultState);
+
+    const onChange = (e, field) =>
+        setState((state) => ({...state, [field]: e.target.value}));
+
     return (
         <MainContainer>
-            <StyledForm sx={{mt: 4}} variant="filed">
-                <Input label="Введіть логін">
+            <StyledForm sx={{mt: 4}}>
+                <Input label="Введіть логін" value={state.login} onChange={onChange} field="login">
                     Логін:
                 </Input>
-                <Input label="Введіть пароль">
+                <Input label="Введіть пароль" value={state.password} onChange={onChange} field="password">
                     Пароль:
                 </Input>
                 <LinkButton to="/newPost" endIcon={<Send/>}>

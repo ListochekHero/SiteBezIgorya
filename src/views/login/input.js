@@ -1,6 +1,6 @@
 import {Box, styled, TextField, Typography} from "@mui/material";
 
-export const Input = ({label, children}) => {
+export const Input = ({label, children, value, onChange, field}) => {
     return (
         <StyledBox>
             <StyledTypography>
@@ -9,6 +9,8 @@ export const Input = ({label, children}) => {
             <TextField
                 label={label}
                 variant="standard"
+                value={value}
+                onChange={(e) => onChange(e, `${field}`)}
             />
         </StyledBox>
     );
