@@ -6,8 +6,8 @@ export const SprintList = ({description}) => {
     return(
         <Box>
             <StyledList>
-                {description.map((item) => (
-                    <SprintItem item={item}/>
+                {description.map((item, id) => (
+                    <SprintItem item={item} key={id}/>
                 ))}
             </StyledList>
         </Box>

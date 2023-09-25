@@ -4,8 +4,8 @@ import {Comment} from "./comment";
 export const Comments = ({comments}) => {
     return (
         <StyledContainer>
-            {comments.map((comment) => (
-                <Comment comment={comment}/>
+            {comments.map((comment, id) => (
+                <Comment comment={comment} key={id}/>
             ))}
         </StyledContainer>
     );
@@ -14,4 +14,4 @@ export const Comments = ({comments}) => {
 const StyledContainer = styled(Container)(() => ({
     display: "flex",
     justifyContent: "space-between",
-}))
+}));
