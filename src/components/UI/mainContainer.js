@@ -2,7 +2,7 @@ import {Container, styled} from "@mui/material";
 
 export const MainContainer = (props) => {
     return (
-        <StyledContainer>
+        <StyledContainer maxWidth="false">
             {props.children}
         </StyledContainer>
     );
