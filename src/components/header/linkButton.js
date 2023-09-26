@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 export const LinkButton = ({to, startIcon = false, endIcon = false, children}) => {
     return (
         <StyledLink to={to}>
-                {children}
+            {children}
         </StyledLink>
     );
 };

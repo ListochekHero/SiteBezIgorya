@@ -2,7 +2,7 @@ import {ListItem, styled} from "@mui/material";
 import {NavLink} from "react-router-dom";
 
 export const NavigationItem = ({route, label}) => {
-    return(
+    return (
         <ListItem sx={{p: 0}}>
             <StyledLink to={route} end>
                 {label}
