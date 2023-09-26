@@ -10,4 +10,5 @@ export const FlexList = (props) => {
 
 const StyledList = styled(List)(() => ({
     display: "flex",
+    padding: "0",
 }));

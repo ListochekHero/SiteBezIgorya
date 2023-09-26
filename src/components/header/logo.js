@@ -1,25 +1,35 @@
-import {styled, Typography} from "@mui/material";
-import {ElderlyWomanTwoTone} from "@mui/icons-material";
-import {FlexBox} from "../UI/flexBox";
+import {Box, styled, Typography} from "@mui/material";
+import {Badge} from "@mui/icons-material";
 
 export const Logo = () => {
     return (
-        <FlexBox>
+        <StyledBox>
             <StyledIcon/>
             <Typography
-                variant="h6"
                 sx={{
-                    display: {xs: 'none', md: 'flex'},
-                    fontFamily: 'monospace',
+                    display: {xs: "none", md: "flex"},
+                    fontFamily: "Syncopate",
+                    fontSize: "17px",
                     fontWeight: 700,
-                    letterSpacing: '.3rem',
                 }}>
-                Bot dif
+                work
             </Typography>
-        </FlexBox>
+        </StyledBox>
     );
 };
 
-const StyledIcon = styled(ElderlyWomanTwoTone)(() => ({
+const StyledIcon = styled(Badge)(() => ({
     marginRight: "10px",
-}))
+}));
+
+const StyledBox = styled(Box)(({theme}) => ({
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: "12px",
+    height: "100%",
+    width: "20%",
+    maxWidth: "20%",
+}));
