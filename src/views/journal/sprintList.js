@@ -1,9 +1,8 @@
-import {Box, List, ListItem, ListItemIcon, styled, Typography} from "@mui/material";
-import {RadioButtonUnchecked} from "@mui/icons-material";
+import {Box, List, styled} from "@mui/material";
 import {SprintItem} from "./sprintItem";
 
 export const SprintList = ({description}) => {
-    return(
+    return (
         <Box>
             <StyledList>
                 {description.map((item, id) => (

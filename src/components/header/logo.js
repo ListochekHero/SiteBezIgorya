@@ -1,5 +1,5 @@
 import {Box, styled, Typography} from "@mui/material";
-import {Badge} from "@mui/icons-material";
+import Badge from "@mui/icons-material/Badge";
 
 export const Logo = () => {
     return (

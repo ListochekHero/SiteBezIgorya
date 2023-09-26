@@ -2,17 +2,10 @@ import {
     Box,
     CardMedia,
     Container,
-    List,
-    ListItem,
-    ListItemAvatar,
-    ListItemIcon,
-    Paper,
     styled,
     Typography
 } from "@mui/material";
-import {FlexContainer} from "../../components/UI/flexContainer";
 import {API} from "../../api";
-import {Image, RadioButtonUnchecked} from "@mui/icons-material";
 import {SprintList} from "./sprintList";
 import {Comments} from "./comments";
 

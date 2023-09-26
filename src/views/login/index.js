@@ -1,7 +1,6 @@
 import {MainContainer} from "../../components/UI/mainContainer";
 import {FormControl, styled} from "@mui/material";
-import {Send} from "@mui/icons-material";
-import {LinkButton} from "../../components/UI/linkButton";
+import {LinkButton} from "../../components/header/linkButton";
 import {Input} from "./input";
 import {useState} from "react";
 
@@ -23,7 +22,7 @@ export const Login = () => {
                 <Input label="Введіть пароль" value={state.password} onChange={onChange} field="password">
                     Пароль:
                 </Input>
-                <LinkButton to="/newPost" endIcon={<Send/>}>
+                <LinkButton to="/newPost">
                     Увійти
                 </LinkButton>
             </StyledForm>

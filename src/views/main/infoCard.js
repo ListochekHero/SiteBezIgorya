@@ -1,5 +1,7 @@
-import {Avatar, Box, Button, Card, Container, IconButton, styled, Typography} from "@mui/material";
-import {Facebook, Instagram, Telegram} from "@mui/icons-material";
+import {Avatar, Box, Button, Card, IconButton, styled, Typography} from "@mui/material";
+import Facebook from "@mui/icons-material/Facebook";
+import Instagram from "@mui/icons-material/Instagram";
+import Telegram from "@mui/icons-material/Telegram";
 import {NavLink} from "react-router-dom";
 
 export const InfoCard = ({props}) => {

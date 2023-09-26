@@ -1,4 +1,4 @@
-import {DragHandle} from "@mui/icons-material";
+import DragHandle from "@mui/icons-material/DragHandle";
 import {Button, styled, Typography} from "@mui/material";
 
 export const MenuButton = ({handleMenu}) => {
