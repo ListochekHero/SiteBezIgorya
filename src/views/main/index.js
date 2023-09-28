@@ -1,22 +1,18 @@
-import {Box, Container, styled, Typography} from "@mui/material";
+import {Container, styled} from "@mui/material";
 import {MainContainer} from "../../components/UI/mainContainer";
 import {InfoCard} from "./infoCard";
 import {API} from "../../api";
 
 export const Main = () => {
-
     const cVs = API.getCV();
 
     return (
         <MainContainer>
-            <Box>
-                <Typography variant="h1" component="h2" align="center">INFO</Typography>
-            </Box>
             <WrapperCards maxWidth="false">
-                {cVs.map((card) => (
+                {cVs.map((card, id) => (
                     <InfoCard
                         props={card}
-                        key={card.id}
+                        key={id}
                     />
                 ))}
             </WrapperCards>
@@ -26,6 +22,12 @@ export const Main = () => {
 
 const WrapperCards = styled(Container)(() => ({
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
     flexWrap: "wrap",
+    gap: "20px",
+    width: "100%",
+    maxWidth: "1220px",
+    "@media (min-width: 600px)": {
+        padding: "0",
+    },
 }));
