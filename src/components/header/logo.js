@@ -1,5 +1,5 @@
 import {Box, styled, Typography} from "@mui/material";
-import Badge from "@mui/icons-material/Badge";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 export const Logo = () => {
     return (
@@ -18,7 +18,7 @@ export const Logo = () => {
     );
 };
 
-const StyledIcon = styled(Badge)(() => ({
+const StyledIcon = styled(BadgeIcon)(() => ({
     marginRight: "10px",
 }));
 

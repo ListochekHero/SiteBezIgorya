@@ -33,8 +33,10 @@ export const Header = ({mode, setMode}) => {
 const StyledHeader = styled(Container)(() => ({
     padding: "25px 30px",
     margin: "0 auto",
-    minWidth: "100vw",
-}))
+    "@media (min-width:1200px)": {
+        maxWidth: "100%",
+    },
+}));
 
 const StyledContainer = styled(Container)(({theme}) => ({
     display: "flex",
@@ -49,7 +51,7 @@ const StyledContainer = styled(Container)(({theme}) => ({
     padding: "4px",
     backgroundColor: theme.palette.primary.main,
     "@media (min-width:1200px)": {
-        maxWidth: "100%"
+        maxWidth: "100%",
     },
     "@media (min-width: 600px)": {
         padding: "4px",

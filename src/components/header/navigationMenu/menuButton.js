@@ -1,4 +1,4 @@
-import DragHandle from "@mui/icons-material/DragHandle";
+import DragHandleIcon from "@mui/icons-material/DragHandle";
 import {Button, styled, Typography} from "@mui/material";
 
 export const MenuButton = ({handleMenu}) => {
@@ -9,7 +9,7 @@ export const MenuButton = ({handleMenu}) => {
             <StyledTypography>
                 Menu
             </StyledTypography>
-            <DragHandle/>
+            <DragHandleIcon/>
         </StyledButton>
     );
 };
