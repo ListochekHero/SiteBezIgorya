@@ -4,16 +4,7 @@ import {Logo} from "./logo";
 import {LoginButton} from "./loginButton";
 import {NavigationMenu} from "./navigationMenu";
 
-export const Header = ({mode, setMode}) => {
-
-    const saveMode = () => {
-        window.localStorage.setItem("mode", mode === "light" ? "dark" : "light")
-    };
-
-    const switchTheme = () => {
-        mode === "light" ? setMode("dark") : setMode("light");
-        saveMode();
-    };
+export const Header = () => {
 
     return (
         <StyledHeader component="header">
@@ -22,9 +13,6 @@ export const Header = ({mode, setMode}) => {
                 <Index/>
                 <LoginButton/>
                 <NavigationMenu/>
-                {/*<IconButton onClick={switchTheme}>
-                    {mode === "light" ? <Brightness7/> : <ModeNight/>}
-                </IconButton>*/}
             </StyledContainer>
         </StyledHeader>
     );

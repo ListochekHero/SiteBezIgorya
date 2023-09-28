@@ -19,15 +19,15 @@ function App() {
     });
 
     const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-
+    
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <BrowserRouter>
                 <StyledBox>
-                    <Header mode={mode} setMode={setMode}/>
+                    <Header/>
                     <AppRouter/>
-                    <Footer/>
+                    <Footer mode={mode} setMode={setMode}/>
                 </StyledBox>
             </BrowserRouter>
         </ThemeProvider>
