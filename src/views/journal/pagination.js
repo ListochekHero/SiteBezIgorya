@@ -16,6 +16,8 @@ export const PaginationBox = ({setPage, count}) => {
                 shape="rounded"
                 hideNextButton={true}
                 hidePrevButton={true}
+                boundaryCount={0}
+                siblingCount={2}
                 onChange={(e, p) => onChange(e, p)}
             />
         </StyledPaper>
