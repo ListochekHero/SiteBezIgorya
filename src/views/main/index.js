@@ -8,26 +8,14 @@ export const Main = () => {
 
     return (
         <MainContainer>
-            <WrapperCards maxWidth="false">
+            <Wrapper>
                 {cVs.map((card, id) => (
                     <InfoCard
                         props={card}
                         key={id}
                     />
                 ))}
-            </WrapperCards>
+            </Wrapper>
         </MainContainer>
     );
 };
-
-const WrapperCards = styled(Container)(() => ({
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    gap: "20px",
-    width: "100%",
-    maxWidth: "1220px",
-    "@media (min-width: 600px)": {
-        padding: "0",
-    },
-}));
