@@ -15,8 +15,8 @@ export const InfoCard = ({props}) => {
                 src={props.url}
             />
             <StyledBox>
-                <Name variant="h4" align="center">{props.name}</Name>
-                <Status variant="h6" align="center">{props.devStatus}</Status>
+                <Name variant="h4" component="h4">{props.name}</Name>
+                <Status variant="h6" component="h6">{props.devStatus}</Status>
                 <Description align="justify">{props.description}</Description>
                 <ButtonsWrapper>
                     <StyledIcon href={props.cv}>
