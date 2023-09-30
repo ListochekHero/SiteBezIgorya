@@ -1,7 +1,7 @@
-import {Container, styled} from "@mui/material";
-import {MainContainer} from "../../components/UI/mainContainer";
+import {MainContainer} from "../../components/mainContainer";
 import {InfoCard} from "./infoCard";
 import {API} from "../../api";
+import {Wrapper} from "../../components/wrapper";
 
 export const Main = () => {
     const cVs = API.getCV();

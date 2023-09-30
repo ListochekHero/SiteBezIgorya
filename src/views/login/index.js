@@ -1,4 +1,4 @@
-import {MainContainer} from "../../components/UI/mainContainer";
+import {MainContainer} from "../../components/mainContainer";
 import {FormControl, styled} from "@mui/material";
 import {LinkButton} from "../../components/header/linkButton";
 import {Input} from "./input";
