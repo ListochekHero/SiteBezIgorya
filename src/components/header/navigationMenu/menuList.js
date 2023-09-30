@@ -30,7 +30,7 @@ const StyledMenu = styled(Menu)(({theme}) => ({
         marginTop: "5px",
         boxShadow: "none",
         borderRadius: "12px",
-        border: `2px solid ${theme.palette.secondary.light}`,
+        border: `2px solid ${theme.palette.action.hover}`,
     },
     "@media (min-width: 901px)": {
         display: "none",
