@@ -1,43 +1,63 @@
-import {
-    Box,
-    CardMedia,
-    Container,
-    styled,
-    Typography
-} from "@mui/material";
-import {API} from "../../api";
-import {SprintList} from "./sprintList";
-import {Comments} from "./comments";
+import {DescriptionList} from "./descriptionList";
+import {Box, CardMedia, Paper, styled, Typography} from "@mui/material";
 
-export const Sprint = ({id}) => {
-    const sprint = API.getSprint(id);
-
+export const Sprint = ({title, date, snapshotURL, description, id}) => {
     return (
-        <Container maxWidth={false}>
-            <StyledContainer maxWidth={false}>
-                <Box>
-                    <Typography variant="h3" component="h3">
-                        Sprint #{id} - {sprint.title}
-                    </Typography>
-                    <Typography variant="h4" component="h4">
-                        Date: {sprint.date}
-                    </Typography>
-                    <StyledMedia image={sprint.snapshotURL}/>
-                </Box>
-                <SprintList description={sprint.description}/>
-            </StyledContainer>
-            <Comments comments={sprint.comments}/>
-        </Container>
+        <WrapperInfo elevation={0}>
+            <StyledBox>
+                <Title variant="h4" component="h4">
+                    Sprint #{id} - {title}
+                </Title>
+                <Date variant="h6" component="h6">
+                    Date: {date}
+                </Date>
+                <StyledMedia image={snapshotURL}/>
+            </StyledBox>
+            <DescriptionList description={description}/>
+        </WrapperInfo>
     );
 };
 
-const StyledMedia = styled(CardMedia)(() => ({
-    width: "640px",
-    height: "360px"
+const WrapperInfo = styled(Paper)(() => ({
+    display: "flex",
+    gap: "10px",
+    justifyContent: "space-between",
+    padding: "20px",
+    width: "100%",
+    borderRadius: "15px",
+    "@media (max-width: 700px)": {
+        flexWrap: "wrap",
+    },
+    "@media (max-width: 540px)": {
+        padding: "10px",
+    },
 }));
 
-const StyledContainer = styled(Container)(() => ({
-    display: "flex",
-    justifyContent: "space-around",
-    flexWrap: "wrap",
+const StyledBox = styled(Box)(() => ({
+    minWidth: "calc(50% - 5px)",
+    "@media (max-width: 700px)": {
+        minWidth: "100%",
+    },
+}));
+
+const StyledMedia = styled(CardMedia)(() => ({
+    width: "100%",
+    height: "300px",
+    borderRadius: "6px",
+    "@media (max-width: 900px)": {
+        height: "200px",
+    },
+}));
+
+const Title = styled(Typography)(() => ({
+    textAlign: "center",
+    "@media (max-width: 540px)": {
+        fontSize: "22px",
+    },
+}));
+
+const Date = styled(Typography)(() => ({
+    "@media (max-width: 540px)": {
+        fontSize: "14px",
+    },
 }));
