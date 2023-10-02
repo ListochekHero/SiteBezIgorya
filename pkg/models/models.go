@@ -18,19 +18,35 @@ type CV struct {
 	Portfolio   string `bson:"portfolio"`
 }
 
-type Sprint struct {
-	IDofSprint  int
-	Title       string
-	Date        string
-	SnapshotURL string
-	Description [10]string
-	Comments    [3]Comment
+type SprintfromFront struct {
+	IDofSprint  int                `bson:"idofsprint"`
+	Title       string             `bson:"title"`
+	SnapshotURL string             `bson:"snapshoturl"`
+	Description []string           `bson:"description"`
+	Comments    []CommentfromFront `bson:"comments"`
 }
 
-type Comment struct {
-	IDofSprint  int
-	Name        string
-	DevStatus   string
-	Description string
-	URLAvatar   string
+type CommentfromFront struct {
+	IDofSprint  int    `bson:"idofsprint"`
+	Name        string `bson:"name"`
+	DevStatus   string `bson:"devstatus"`
+	Description string `bson:"description"`
+	URLAvatar   string `bson:"url"`
+}
+
+type SprintforDB struct {
+	IDofSprint  int            `bson:"idofsprint"`
+	Title       string         `bson:"title"`
+	Date        string         `bson:"date"`
+	SnapshotURL string         `bson:"snapshoturl"`
+	Description []string       `bson:"description"`
+	Comments    []CommentforDB `bson:"comments"`
+}
+
+type CommentforDB struct {
+	IDofSprint  int    `bson:"idofsprint"`
+	Name        string `bson:"name"`
+	DevStatus   string `bson:"devstatus"`
+	Description string `bson:"description"`
+	URLAvatar   string `bson:"url"`
 }
