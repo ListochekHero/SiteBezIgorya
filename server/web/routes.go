@@ -11,7 +11,9 @@ func (app *application) routes() *http.ServeMux {
 	mux.HandleFunc("/journal", app.showSomeJournal)
 	mux.HandleFunc("/login", app.mainWindowHandler)
 	mux.HandleFunc("/newPost", app.createSomeJournal)
-	mux.HandleFunc("/team/CVs/", app.sendCVbyid)
+	mux.HandleFunc("/team/CVs/", app.sendCVs)
+	mux.HandleFunc("/saveSpint/", app.saveSpint)
+	mux.HandleFunc("/sprintsCount/", app.sprintsCount)
 
 	fileServer := http.FileServer(neuteredFileSystem{http.Dir("./ui/static/")})
 	mux.Handle("/static", http.NotFoundHandler())
