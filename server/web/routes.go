@@ -8,9 +8,10 @@ import (
 func (app *application) routes() *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", app.mainWindowHandler)
-	mux.HandleFunc("/journal", app.mainWindowHandler)
+	mux.HandleFunc("/journal", app.showSomeJournal)
 	mux.HandleFunc("/login", app.mainWindowHandler)
-	mux.HandleFunc("/newPost", app.mainWindowHandler)
+	mux.HandleFunc("/newPost", app.createSomeJournal)
+	mux.HandleFunc("/team/CVs/", app.sendCVbyid)
 
 	fileServer := http.FileServer(neuteredFileSystem{http.Dir("./ui/static/")})
 	mux.Handle("/static", http.NotFoundHandler())

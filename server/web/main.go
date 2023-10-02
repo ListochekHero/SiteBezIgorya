@@ -10,16 +10,19 @@ import (
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+
+	"botgap.duo.com/SiteBezIgorya/pkg/models/mongoDB"
 )
 
 type application struct {
-	errorLog *log.Logger
-	infoLog  *log.Logger
+	errorLog     *log.Logger
+	infoLog      *log.Logger
+	mongoDBModel *mongoDB.MongoDBModel
 }
 
 func connectToMongoDB() (*mongo.Client, error) {
 	// З'єднання з базою даних MongoDB
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://goWebUser:gowebus2er@localhost:27017/goWebDB"))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://goWebUser:gowebuser@localhost:27017/goWebDB"))
 	if err != nil {
 		return nil, err
 	}
@@ -61,8 +64,9 @@ func main() {
 	defer client.Disconnect(context.TODO())
 
 	app := &application{
-		errorLog: errorLog,
-		infoLog:  infoLog,
+		errorLog:     errorLog,
+		infoLog:      infoLog,
+		mongoDBModel: &mongoDB.MongoDBModel{Client: client},
 	}
 
 	srv := &http.Server{
