@@ -75,30 +75,17 @@ func (app *application) sendCVs(w http.ResponseWriter, r *http.Request) {
 	// 	return
 	// }
 
-	app.mongoDBModel.GetAllCVs()
-
-	collection := app.mongoDBModel.Client.Database("goWebDB").Collection("CVs")
-	cursor, err := collection.Find(context.TODO(), bson.M{})
+	cvs, err := app.mongoDBModel.GetAllCVs()
 	if err != nil {
 		http.Error(w, "Unable to retrieve CV data from database", http.StatusInternalServerError)
+		app.errorLog.Fatal(err)
 		return
-	}
-	defer cursor.Close(context.TODO())
-
-	var cvs []models.CV
-
-	for cursor.Next(context.TODO()) {
-		var cv models.CV
-		if err := cursor.Decode(&cv); err != nil {
-			http.Error(w, "Unable to decode CV data", http.StatusInternalServerError)
-			return
-		}
-		cvs = append(cvs, cv)
 	}
 
 	cvJSON, err := json.Marshal(cvs)
 	if err != nil {
 		http.Error(w, "Unable to encode CV data to JSON", http.StatusInternalServerError)
+		app.errorLog.Fatal(err)
 		return
 	}
 
@@ -123,9 +110,10 @@ func (app *application) saveSpint(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) sprintsCount(w http.ResponseWriter, r *http.Request) {
-	count, err := app.mongoDBModel.DocumnetsCount(app.mongoDBModel.Client, "gCoWebDB", "Sprints")
+	count, err := app.mongoDBModel.DocumentsCount(app.mongoDBModel.Client, "gCoWebDB", "Sprints")
 	if err != nil {
 		http.Error(w, "Unable to retrieve doucments count data from database", http.StatusInternalServerError)
+		app.errorLog.Fatal(err)
 		return
 	}
 	w.Header().Set("Content-Type", "text/plain")

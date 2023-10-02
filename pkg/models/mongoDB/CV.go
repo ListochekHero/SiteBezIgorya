@@ -16,16 +16,30 @@ func (m *MongoDBModel) Insert() (int, error) {
 	return 0, nil
 }
 
-func (m *MongoDBModel) GetAllCVs() (*models.CV, error) {
+func (m *MongoDBModel) GetAllCVs() ([]models.CV, error) {
 
-	return nil, nil
+	collection := m.Client.Database("goWebDB").Collection("CVs")
+	cursor, err := collection.Find(context.TODO(), bson.M{})
+	if err != nil {
+		return nil, err
+	}
+	defer cursor.Close(context.TODO())
+	var cvs []models.CV
+	for cursor.Next(context.TODO()) {
+		var cv models.CV
+		if err := cursor.Decode(&cv); err != nil {
+			return nil, err
+		}
+		cvs = append(cvs, cv)
+	}
+	return cvs, nil
 }
 
 func (m *MongoDBModel) Latest() ([]*models.CV, error) {
 	return nil, nil
 }
 
-func (m *MongoDBModel) DocumnetsCount(client *mongo.Client, dbName string, collectionName string) (int64, error) {
+func (m *MongoDBModel) DocumentsCount(client *mongo.Client, dbName string, collectionName string) (int64, error) {
 	collection := client.Database(dbName).Collection(collectionName)
 	count, err := collection.CountDocuments(context.Background(), bson.M{})
 	if err != nil {
