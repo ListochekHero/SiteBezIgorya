@@ -19,7 +19,6 @@ type CV struct {
 }
 
 type SprintfromFront struct {
-	IDofSprint  int                `bson:"idofsprint"`
 	Title       string             `bson:"title"`
 	SnapshotURL string             `bson:"snapshoturl"`
 	Description []string           `bson:"description"`
@@ -27,26 +26,35 @@ type SprintfromFront struct {
 }
 
 type CommentfromFront struct {
-	IDofSprint  int    `bson:"idofsprint"`
 	Name        string `bson:"name"`
-	DevStatus   string `bson:"devstatus"`
 	Description string `bson:"description"`
-	URLAvatar   string `bson:"url"`
 }
 
 type SprintforDB struct {
-	IDofSprint  int            `bson:"idofsprint"`
-	Title       string         `bson:"title"`
-	Date        string         `bson:"date"`
-	SnapshotURL string         `bson:"snapshoturl"`
-	Description []string       `bson:"description"`
-	Comments    []CommentforDB `bson:"comments"`
+	IDofSprint  int      `bson:"idofsprint"`
+	Title       string   `bson:"title"`
+	Date        string   `bson:"date"`
+	SnapshotURL string   `bson:"snapshoturl"`
+	Description []string `bson:"description"`
 }
 
 type CommentforDB struct {
 	IDofSprint  int    `bson:"idofsprint"`
 	Name        string `bson:"name"`
-	DevStatus   string `bson:"devstatus"`
+	Description string `bson:"description"`
+}
+
+type SprintforFront struct {
+	Title       string            `bson:"title"`
+	Date        string            `bson:"date"`
+	SnapshotURL string            `bson:"snapshoturl"`
+	Description []string          `bson:"description"`
+	Comments    []CommentforFront `bson:"comments"`
+}
+
+type CommentforFront struct {
+	Name        string `bson:"name"`
 	Description string `bson:"description"`
 	URLAvatar   string `bson:"url"`
+	DevStatus   string `bson:"devstatus"`
 }
