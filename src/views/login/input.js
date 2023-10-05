@@ -1,13 +1,13 @@
-import {Box, styled, TextField, Typography} from "@mui/material";
+import {Box, styled, TextField} from "@mui/material";
 
-export const Input = ({label, children, value, onChange, field}) => {
+export const Input = ({children, value, onChange, field, isError}) => {
     return (
         <StyledBox>
-            <StyledTypography>
-                {children}
-            </StyledTypography>
-            <TextField
-                label={label}
+            <StyledTextField
+                error={!value && isError}
+                label={children}
+                fullWidth
+                color="secondary"
                 variant="standard"
                 value={value}
                 onChange={(e) => onChange(e, `${field}`)}
@@ -17,13 +17,16 @@ export const Input = ({label, children, value, onChange, field}) => {
 };
 
 const StyledBox = styled(Box)(() => ({
+    width: "100%",
     display: "flex",
     justifyContent: "center",
-    alignItems: "baseline",
+    alignItems: "flex-end",
     columnGap: "10px",
 }));
 
-const StyledTypography = styled(Typography)(() => ({
-    width: "100px",
-    textAlign: "end",
+const StyledTextField = styled(TextField)(({theme}) => ({
+    borderBottom: `1px solid ${theme.palette.secondary.main}`,
+    ">label": {
+        color: theme.palette.secondary.main,
+    },
 }));

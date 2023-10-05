@@ -1,8 +1,9 @@
 import {MainContainer} from "../../components/mainContainer";
-import {FormControl, styled} from "@mui/material";
+import {FormControl, Paper, styled} from "@mui/material";
 import {LinkButton} from "../../components/header/linkButton";
 import {Input} from "./input";
 import {useState} from "react";
+import {Wrapper} from "../../components/wrapper";
 
 const defaultState = {login: "", password: ""};
 
@@ -15,17 +16,21 @@ export const Login = () => {
 
     return (
         <MainContainer>
-            <StyledForm sx={{mt: 4}}>
-                <Input label="Введіть логін" value={state.login} onChange={onChange} field="login">
-                    Логін:
-                </Input>
-                <Input label="Введіть пароль" value={state.password} onChange={onChange} field="password">
-                    Пароль:
-                </Input>
-                <LinkButton to="/newPost">
-                    Увійти
-                </LinkButton>
-            </StyledForm>
+            <Wrapper>
+                <StyledPaper>
+                    <StyledForm>
+                        <Input value={state.login} onChange={onChange} field="login">
+                            Логін:
+                        </Input>
+                        <Input value={state.password} onChange={onChange} field="password">
+                            Пароль:
+                        </Input>
+                        <LinkButton to="/newSprint">
+                            Log in
+                        </LinkButton>
+                    </StyledForm>
+                </StyledPaper>
+            </Wrapper>
         </MainContainer>
     );
 };
@@ -33,4 +38,22 @@ export const Login = () => {
 const StyledForm = styled(FormControl)(() => ({
     display: "flex",
     alignItems: "center",
+    rowGap: "20px",
+}));
+
+const StyledPaper = styled(Paper)(() => ({
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    justifyContent: "space-between",
+    padding: "20px",
+    width: "100%",
+    maxWidth: "500px",
+    borderRadius: "15px",
+    "@media (max-width: 700px)": {
+        flexWrap: "wrap",
+    },
+    "@media (max-width: 540px)": {
+        padding: "10px",
+    },
 }));
