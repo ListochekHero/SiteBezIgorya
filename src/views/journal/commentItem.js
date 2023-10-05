@@ -3,10 +3,10 @@ import {Avatar, Box, Card, styled, Typography} from "@mui/material";
 export const CommentItem = ({comment}) => {
     return (
         <StyledCard>
-            <StyledAvatar src={comment.avatar}/>
+            <StyledAvatar src={comment.URLAvatar}/>
             <StyledBox>
-                <Name variant="h6" component="h6">{comment.name} — {comment.devStatus}</Name>
-                <Comment>{comment.comment}</Comment>
+                <Name variant="h6" component="h6">{comment.Name} — {comment.DevStatus}</Name>
+                <Comment>{comment.Comment}</Comment>
             </StyledBox>
         </StyledCard>
     );
