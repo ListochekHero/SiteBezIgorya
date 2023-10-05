@@ -1,6 +1,4 @@
 import {Avatar, Box, Card, IconButton, styled, Typography} from "@mui/material";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import WorkIcon from '@mui/icons-material/Work';
@@ -11,31 +9,25 @@ export const InfoCard = ({props}) => {
         <StyledCard>
             <StyledAvatar
                 variant="rounded"
-                alt={props.name}
-                src={props.url}
+                alt={props.Name}
+                src={props.URLAvatar}
             />
             <StyledBox>
-                <Name variant="h4" component="h4">{props.name}</Name>
-                <Status variant="h6" component="h6">{props.devStatus}</Status>
-                <Description align="justify">{props.description}</Description>
+                <Name variant="h4" component="h4">{props.Name}</Name>
+                <Status variant="h6" component="h6">{props.DevStatus}</Status>
+                <Description align="justify">{props.Description}</Description>
                 <ButtonsWrapper>
-                    <StyledIcon href={props.cv}>
+                    <StyledIcon href={props.CV} target="_blank">
                         <RecentActorsIcon/>
                     </StyledIcon>
-                    <StyledIcon href={props.gitHub} target="_blank">
+                    <StyledIcon href={props.GitHub} target="_blank">
                         <GitHubIcon/>
                     </StyledIcon>
-                    <StyledIcon href={props.portfolio} target="_blank">
+                    <StyledIcon href={props.Portfolio} target="_blank">
                         <WorkIcon/>
                     </StyledIcon>
-                    <StyledIcon href={props.telegram} target="_blank">
+                    <StyledIcon href={props.Telegram} target="_blank">
                         <TelegramIcon/>
-                    </StyledIcon>
-                    <StyledIcon href={props.instagram} target="_blank">
-                        <InstagramIcon/>
-                    </StyledIcon>
-                    <StyledIcon href={props.facebook} target="_blank">
-                        <FacebookIcon/>
                     </StyledIcon>
                 </ButtonsWrapper>
             </StyledBox>
