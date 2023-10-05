@@ -6,11 +6,14 @@ import {API} from "../../api";
 import {useEffect, useMemo, useState} from "react";
 import {PaginationBox} from "./pagination";
 import {logPlugin} from "@babel/preset-env/lib/debug";
+import {Box} from "@mui/material";
+import {IfError} from "../../components/ifError";
 
 export const Journal = () => {
     const [sprint, setSprint] = useState([]);
     const [page, setPage] = useState(1);
     const [count, setCount] = useState();
+    const [load, setLoad] = useState(false);
 
     const fetchCount = async () => await API.getCount();
     const fetchSprint = async (id) => await API.getSprint(id);
@@ -22,17 +25,22 @@ export const Journal = () => {
 
     useEffect(() => {
         fetchSprint(page)
-            .then(r => setSprint(r))
+            .then(r => setSprint(r));
+        setLoad(!!count);
     }, [page]);
 
     return (
         <MainContainer>
-            <Wrapper>
-                {!!sprint.Title && <Sprint title={sprint.Title} date={sprint.Date} snapshotURL={sprint.SnapshotURL}
-                                           description={sprint.Descriptions} id={page}/>}
-                {!!sprint.Comments && <CommentList comments={sprint.Comments}/>}
+            {load ? <Wrapper>
+                <Sprint title={sprint.Title}
+                        date={sprint.Date}
+                        snapshotURL={sprint.SnapshotURL}
+                        description={sprint.Descriptions}
+                        id={page}/>
+                <CommentList comments={sprint.Comments}/>
                 <PaginationBox setPage={setPage} count={count}/>
-            </Wrapper>
+            </Wrapper> : <IfError/>
+            }
         </MainContainer>
     );
 };
