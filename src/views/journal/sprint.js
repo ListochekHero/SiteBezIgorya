@@ -1,13 +1,12 @@
 import {DescriptionList} from "./descriptionList";
 import {Box, CardMedia, Paper, styled, Typography} from "@mui/material";
+import {Title} from "../../components/UI/title";
 
 export const Sprint = ({title, date, snapshotURL, description, id}) => {
     return (
         <WrapperInfo elevation={0}>
             <StyledBox>
-                <Title variant="h4" component="h4">
-                    Sprint #{id} - {title}
-                </Title>
+                <Title>Sprint #{id} - {title}</Title>
                 <Date variant="h6" component="h6">
                     Date: {date}
                 </Date>
@@ -46,13 +45,6 @@ const StyledMedia = styled(CardMedia)(() => ({
     borderRadius: "6px",
     "@media (max-width: 900px)": {
         height: "200px",
-    },
-}));
-
-const Title = styled(Typography)(() => ({
-    textAlign: "center",
-    "@media (max-width: 540px)": {
-        fontSize: "22px",
     },
 }));
 

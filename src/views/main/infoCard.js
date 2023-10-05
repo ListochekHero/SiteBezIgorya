@@ -3,6 +3,7 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import WorkIcon from '@mui/icons-material/Work';
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
+import {Title} from "../../components/UI/title";
 
 export const InfoCard = ({props}) => {
     return (
@@ -13,7 +14,7 @@ export const InfoCard = ({props}) => {
                 src={props.URLAvatar}
             />
             <StyledBox>
-                <Name variant="h4" component="h4">{props.Name}</Name>
+                <Title>{props.Name}</Title>
                 <Status variant="h6" component="h6">{props.DevStatus}</Status>
                 <Description align="justify">{props.Description}</Description>
                 <ButtonsWrapper>
@@ -80,13 +81,6 @@ const StyledIcon = styled(IconButton)(({theme}) => ({
     padding: "0",
     marginTop: "10px",
 }));
-
-const Name = styled(Typography)(() => ({
-    textAlign: "center",
-    "@media (max-width: 540px)": {
-        fontSize: "22px",
-    },
-}))
 
 const Status = styled(Typography)(() => ({
     textAlign: "center",

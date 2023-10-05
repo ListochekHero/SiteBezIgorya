@@ -4,6 +4,7 @@ import {FormPost} from "./formPost";
 import {Wrapper} from "../../components/wrapper";
 import {API} from "../../api";
 import {useEffect, useState} from "react";
+import {Title} from "../../components/UI/title";
 
 export const NewSprint = () => {
     const [count, setCount] = useState(0);
@@ -19,9 +20,7 @@ export const NewSprint = () => {
         <MainContainer>
             <Wrapper>
                 <StyledPaper>
-                    <Typography component="h4" variant="h4" align="center">
-                        Sprint #{count + 1}
-                    </Typography>
+                    <Title>Sprint #{count + 1}</Title>
                     <FormPost/>
                 </StyledPaper>
             </Wrapper>
