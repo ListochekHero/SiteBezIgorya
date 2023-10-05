@@ -19,7 +19,7 @@ function App() {
     });
 
     const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-    
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
