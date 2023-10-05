@@ -4,6 +4,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import WorkIcon from '@mui/icons-material/Work';
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
 import {Title} from "../../components/UI/title";
+import {Subtitle} from "../../components/UI/subtitle";
 
 export const InfoCard = ({props}) => {
     return (
@@ -15,7 +16,7 @@ export const InfoCard = ({props}) => {
             />
             <StyledBox>
                 <Title>{props.Name}</Title>
-                <Status variant="h6" component="h6">{props.DevStatus}</Status>
+                <Subtitle>{props.DevStatus}</Subtitle>
                 <Description align="justify">{props.Description}</Description>
                 <ButtonsWrapper>
                     <StyledIcon href={props.CV} target="_blank">
@@ -82,16 +83,9 @@ const StyledIcon = styled(IconButton)(({theme}) => ({
     marginTop: "10px",
 }));
 
-const Status = styled(Typography)(() => ({
-    textAlign: "center",
-    "@media (max-width: 540px)": {
-        fontSize: "14px",
-    },
-}))
-
 const Description = styled(Typography)(() => ({
     textAlign: "justify",
     "@media (max-width: 540px)": {
         fontSize: "12px",
     },
-}))
+}));

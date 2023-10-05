@@ -7,6 +7,7 @@ import {MyButton} from "../../components/UI/myButton";
 import {FlexBox} from "../../components/UI/flexBox";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import {Subtitle} from "../../components/UI/subtitle";
 
 const defaultState = {
     title: "",
@@ -134,7 +135,7 @@ export const FormPost = () => {
             <Input value={state.title} onChange={onChange} field="title" isError={isError}>
                 title:
             </Input>
-            <Typography>Descriptions:</Typography>
+            <Subtitle>Descriptions:</Subtitle>
             {descriptions.map((item, id) => (
                 <CommentInput value={item} onChange={onDescriptionChange} id={id} key={id} isError={isError}/>
             ))}
@@ -153,7 +154,7 @@ export const FormPost = () => {
                     <VisuallyHiddenInput id="fileItem" type="file" onChange={(e) => uploadFile(e)}/>
                 </MyButton>
             </StyledBox>
-            <Typography>Comments:</Typography>
+            <Subtitle>Comments:</Subtitle>
             {comments.map((item, id) => (
                 <CommentInput value={item.comment} onChange={onCommentChange} id={id} key={id} isError={isError}>
                     {item.name}:

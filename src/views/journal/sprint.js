@@ -1,15 +1,16 @@
 import {DescriptionList} from "./descriptionList";
 import {Box, CardMedia, Paper, styled, Typography} from "@mui/material";
 import {Title} from "../../components/UI/title";
+import {Subtitle} from "../../components/UI/subtitle";
 
 export const Sprint = ({title, date, snapshotURL, description, id}) => {
     return (
         <WrapperInfo elevation={0}>
             <StyledBox>
                 <Title>Sprint #{id} - {title}</Title>
-                <Date variant="h6" component="h6">
+                <Subtitle>
                     Date: {date}
-                </Date>
+                </Subtitle>
                 <StyledMedia image={snapshotURL}/>
             </StyledBox>
             <DescriptionList description={description}/>
@@ -45,11 +46,5 @@ const StyledMedia = styled(CardMedia)(() => ({
     borderRadius: "6px",
     "@media (max-width: 900px)": {
         height: "200px",
-    },
-}));
-
-const Date = styled(Typography)(() => ({
-    "@media (max-width: 540px)": {
-        fontSize: "14px",
     },
 }));
