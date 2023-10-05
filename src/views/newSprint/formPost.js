@@ -1,6 +1,6 @@
 import {Box, Button, FormControl, styled, Typography} from "@mui/material";
 import {useState} from "react";
-import {Input} from "../login/input";
+import {Input} from "../../components/UI/input";
 import {CommentInput} from "./commentInput";
 import {API} from "../../api";
 import {MyButton} from "../../components/UI/myButton";

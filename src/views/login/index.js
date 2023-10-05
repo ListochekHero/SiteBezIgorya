@@ -1,7 +1,7 @@
 import {MainContainer} from "../../components/mainContainer";
 import {FormControl, Paper, styled} from "@mui/material";
 import {LinkButton} from "../../components/header/linkButton";
-import {Input} from "./input";
+import {Input} from "../../components/UI/input";
 import {useState} from "react";
 import {Wrapper} from "../../components/wrapper";
 
