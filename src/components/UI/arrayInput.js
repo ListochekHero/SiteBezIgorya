@@ -1,6 +1,6 @@
-import {Box, styled, TextField, Typography} from "@mui/material";
+import {Box, styled, TextField} from "@mui/material";
 
-export const CommentInput = ({value, onChange, id, children, isError}) => {
+export const ArrayInput = ({value, onChange, id, children, isError}) => {
     return (
         <StyledBox>
             <StyledTextField

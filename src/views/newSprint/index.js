@@ -1,4 +1,4 @@
-import {Paper, styled, Typography} from "@mui/material";
+import {Paper, styled} from "@mui/material";
 import {MainContainer} from "../../components/mainContainer";
 import {FormPost} from "./formPost";
 import {Wrapper} from "../../components/wrapper";

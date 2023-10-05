@@ -1,7 +1,7 @@
-import {Box, Button, FormControl, styled, Typography} from "@mui/material";
+import {Box, FormControl, styled, Typography} from "@mui/material";
 import {useState} from "react";
 import {Input} from "../../components/UI/input";
-import {CommentInput} from "./commentInput";
+import {ArrayInput} from "../../components/UI/arrayInput";
 import {API} from "../../api";
 import {MyButton} from "../../components/UI/myButton";
 import {FlexBox} from "../../components/UI/flexBox";
@@ -137,7 +137,7 @@ export const FormPost = () => {
             </Input>
             <Subtitle>Descriptions:</Subtitle>
             {descriptions.map((item, id) => (
-                <CommentInput value={item} onChange={onDescriptionChange} id={id} key={id} isError={isError}/>
+                <ArrayInput value={item} onChange={onDescriptionChange} id={id} key={id} isError={isError}/>
             ))}
             <FlexBox>
                 <MyButton onClick={addDescription}>
@@ -156,9 +156,9 @@ export const FormPost = () => {
             </StyledBox>
             <Subtitle>Comments:</Subtitle>
             {comments.map((item, id) => (
-                <CommentInput value={item.comment} onChange={onCommentChange} id={id} key={id} isError={isError}>
+                <ArrayInput value={item.comment} onChange={onCommentChange} id={id} key={id} isError={isError}>
                     {item.name}:
-                </CommentInput>
+                </ArrayInput>
             ))}
             <MyButton onClick={sendSprint}>Send</MyButton>
         </StyledForm>
