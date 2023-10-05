@@ -1,10 +1,11 @@
-import {Avatar, Box, Card, IconButton, styled, Typography} from "@mui/material";
+import {Avatar, Box, Card, IconButton, styled} from "@mui/material";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import WorkIcon from '@mui/icons-material/Work';
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
 import {Title} from "../../components/UI/title";
 import {Subtitle} from "../../components/UI/subtitle";
+import {Description} from "../../components/UI/description";
 
 export const InfoCard = ({props}) => {
     return (
@@ -81,11 +82,4 @@ const StyledIcon = styled(IconButton)(({theme}) => ({
     stroke: theme.palette.background.default,
     padding: "0",
     marginTop: "10px",
-}));
-
-const Description = styled(Typography)(() => ({
-    textAlign: "justify",
-    "@media (max-width: 540px)": {
-        fontSize: "12px",
-    },
 }));

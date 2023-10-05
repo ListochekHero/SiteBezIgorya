@@ -1,5 +1,6 @@
-import {ListItem, ListItemIcon, styled, Typography} from "@mui/material";
+import {ListItem, ListItemIcon, styled} from "@mui/material";
 import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
+import {Description} from "../../components/UI/description";
 
 export const DescriptionItem = ({item}) => {
     return (
@@ -26,10 +27,3 @@ const Item = styled(ListItem)(() => ({
 const Icon = styled(ListItemIcon)(() => ({
     minWidth: "auto",
 }));
-
-const Description = styled(Typography)(() => ({
-    textAlign: "justify",
-    "@media (max-width: 540px)": {
-        fontSize: "12px",
-    },
-}))
