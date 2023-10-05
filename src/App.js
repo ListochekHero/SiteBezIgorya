@@ -25,9 +25,9 @@ function App() {
             <CssBaseline/>
             <BrowserRouter>
                 <StyledBox>
-                    <Header mode={mode} setMode={setMode}/>
+                    <Header/>
                     <AppRouter/>
-                    <Footer/>
+                    <Footer mode={mode} setMode={setMode}/>
                 </StyledBox>
             </BrowserRouter>
         </ThemeProvider>

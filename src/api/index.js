@@ -1,53 +1,38 @@
+const path = "http://134.249.147.135/";
 export const API = {
-    getCV: () => [
-        {
-            name: "Фещенко Сергій",
-            description: "Займався backend-розробкою та налаштуванням серверу.",
-            url: "http://localhost/img/avatar_1",
-            gitHub: "https://github.com/ListochekHero",
-            cv: "/CV",
-            portfolio: "https://github.com/ListochekHero?tab=repositories",
-            id: 1,
-        },
-        {
-            name: "Кривизюк Андрій",
-            description: "Займався frontend-розробкою.",
-            url: "http://localhost/img/avatar_2",
-            gitHub: "https://github.com/su8ject",
-            cv: "/CV",
-            portfolio: "su8ject.github.io/portfolio/",
-            id: 2,
-        }],
 
-    getSprint: (id) => ({
-        id: 1,
-        title: "Some sprint name",
-        date: new Date().toLocaleString(),
-        snapshotURL: "https://wow.zamimg.com/uploads/screenshots/small/544219.jpg",
-        description: ["some text", "some text", "some text", "some text", "some text", "some text"],
-        comments: [
-            {
-                name: "Dmytro",
-                role: "foo",
-                comment: "some text",
-                avatar: "url",
-            },
-            {
-                name: "Serhii",
-                role: "foo",
-                comment: "some text",
-                avatar: "url",
-            },
-            {
-                name: "Andrii",
-                role: "foo",
-                comment: "some text",
-                avatar: "url",
-            },
-        ],
-    }),
+    getCVs: () => {
+        const cv = fetch(`${path}team/CVs/`)
+            .then(r => r.json(), () => [])
+            .catch(e => console.log(e));
 
-    saveSprint: (object) => {
-        console.log(object);
+        return cv;
+    },
+
+    getSprint: (id) => {
+        const sprint = fetch(`${path}getSprint?id=${id}`)
+            .then(r => r.json(), () => [])
+            .catch(e => console.log(e));
+
+        return sprint;
+    },
+
+    saveSprint: async (form) => {
+        await fetch(`${path}saveSprint/`, {
+            method: "POST",
+            mode: 'no-cors',
+            body: form,
+        })
+            .then(r => r.json())
+            .then(r => console.log(r))
+            .catch(e => console.log(e));
+    },
+
+    getCount: () => {
+        const count = fetch(`${path}sprintsCount/`)
+            .then(r => r.json(), () => 0)
+            .catch(e => console.log(e));
+
+        return count;
     },
 };

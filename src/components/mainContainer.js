@@ -9,5 +9,7 @@ export const MainContainer = (props) => {
 };
 
 const StyledContainer = styled(Container)(() => ({
+    display: "flex",
+    alignItems: "center",
     flexGrow: "1",
 }));

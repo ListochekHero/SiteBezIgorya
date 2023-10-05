@@ -1,31 +1,34 @@
-import {Box, Container, styled, Typography} from "@mui/material";
-import {MainContainer} from "../../components/UI/mainContainer";
+import {MainContainer} from "../../components/mainContainer";
 import {InfoCard} from "./infoCard";
 import {API} from "../../api";
+import {Wrapper} from "../../components/wrapper";
+import {useEffect, useState} from "react";
+import {IfError} from "../../components/ifError";
 
 export const Main = () => {
+    const [cvs, setCvs] = useState([]);
+    const [load, setLoad] = useState(false);
 
-    const cVs = API.getCV();
+    const fetchCvs = async () => {
+        return await API.getCVs();
+    };
+
+    useEffect(() => {
+        fetchCvs()
+            .then(r => setCvs(r));;
+        setLoad(!!cvs[0])
+    }, []);
 
     return (
         <MainContainer>
-            <Box>
-                <Typography variant="h1" component="h2" align="center">INFO</Typography>
-            </Box>
-            <WrapperCards maxWidth="false">
-                {cVs.map((card) => (
+            <Wrapper>
+                {load ? cvs.map((card, id) => (
                     <InfoCard
                         props={card}
-                        key={card.id}
+                        key={id}
                     />
-                ))}
-            </WrapperCards>
+                )) : <IfError/>}
+            </Wrapper>
         </MainContainer>
     );
 };
-
-const WrapperCards = styled(Container)(() => ({
-    display: "flex",
-    justifyContent: "space-around",
-    flexWrap: "wrap",
-}));
