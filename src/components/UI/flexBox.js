@@ -10,5 +10,6 @@ export const FlexBox = (props) => {
 
 const StyledBox = styled(Box)(() => ({
     display: "flex",
+    gap: "20px",
     flexWrap: "wrap",
 }));
