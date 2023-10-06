@@ -13,10 +13,14 @@ export const Main = () => {
         return await API.getCVs();
     };
 
+    const getCvs = (r) => {
+        setCvs(r);
+        setLoad(!!r);
+    };
+
     useEffect(() => {
         fetchCvs()
-            .then(r => setCvs(r));;
-        setLoad(!!cvs[0])
+            .then(r => getCvs(r));
     }, []);
 
     return (
