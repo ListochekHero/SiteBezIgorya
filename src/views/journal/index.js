@@ -18,6 +18,11 @@ export const Journal = () => {
     const fetchCount = async () => await API.getCount();
     const fetchSprint = async (id) => await API.getSprint(id);
 
+    const getSprint = (r) => {
+        setSprint(r);
+        setLoad(!!r);
+    };
+
     useEffect(() => {
         fetchCount()
             .then(r => setCount(r));
@@ -25,8 +30,7 @@ export const Journal = () => {
 
     useEffect(() => {
         fetchSprint(page)
-            .then(r => setSprint(r));
-        setLoad(!!count);
+            .then(r => getSprint(r));
     }, [page]);
 
     return (
