@@ -28,11 +28,11 @@ export const colors = {
     darkMode: {
         action: {
             selected: "#ffffff",
-            hover: "#234422",
+            hover: "#979797",
         },
         primary: {
             light: "#fefefb",
-            main: "#b6bacb",
+            main: "#2d2d2d",
             dark: "#8f8d8f",
             contrastText: "#4d6560",
         },
@@ -43,7 +43,7 @@ export const colors = {
             contrastText: "#bcbcbc",
         },
         background: {
-            footer: "#272727",
+            paper: "#272727",
         },
     },
 };

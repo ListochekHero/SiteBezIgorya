@@ -79,7 +79,10 @@ const ButtonsWrapper = styled(Box)(() => ({
 }));
 
 const StyledIcon = styled(IconButton)(({theme}) => ({
-    stroke: theme.palette.background.default,
+    ">svg": {
+        stroke: theme.palette.background.paper,
+        fill: theme.palette.secondary.main,
+    },
     padding: "0",
     marginTop: "10px",
 }));
