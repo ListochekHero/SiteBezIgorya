@@ -18,43 +18,43 @@ type CV struct {
 	Portfolio   string `bson:"portfolio"`
 }
 
-type SprintfromFront struct {
-	Title       string             `bson:"title"`
-	SnapshotURL string             `bson:"snapshoturl"`
-	Description []string           `bson:"description"`
-	Comments    []CommentfromFront `bson:"comments"`
+type SprintFromFront struct {
+	Title        string
+	SnapshotURL  string
+	Descriptions []string
+	Comments     []CommentFromFront
 }
 
-type CommentfromFront struct {
-	Name        string `bson:"name"`
-	Description string `bson:"description"`
+type CommentFromFront struct {
+	Name    string
+	Comment string
 }
 
-type SprintforDB struct {
-	IDofSprint  int      `bson:"idofsprint"`
-	Title       string   `bson:"title"`
-	Date        string   `bson:"date"`
-	SnapshotURL string   `bson:"snapshoturl"`
-	Description []string `bson:"description"`
+type SprintForDB struct {
+	IDofSprint   int      `bson:"idofsprint"`
+	Title        string   `bson:"title"`
+	Date         string   `bson:"date"`
+	SnapshotURL  string   `bson:"snapshoturl"`
+	Descriptions []string `bson:"description"`
 }
 
-type CommentforDB struct {
-	IDofSprint  int    `bson:"idofsprint"`
-	Name        string `bson:"name"`
-	Description string `bson:"description"`
+type CommentForDB struct {
+	IDofSprint int    `bson:"idofsprint"`
+	Name       string `bson:"name"`
+	Comment    string `bson:"description"`
 }
 
-type SprintforFront struct {
-	Title       string            `bson:"title"`
-	Date        string            `bson:"date"`
-	SnapshotURL string            `bson:"snapshoturl"`
-	Description []string          `bson:"description"`
-	Comments    []CommentforFront `bson:"comments"`
+type SprintForFront struct {
+	Title        string
+	Date         string
+	SnapshotURL  string
+	Descriptions []string
+	Comments     []CommentForFront
 }
 
-type CommentforFront struct {
-	Name        string `bson:"name"`
-	Description string `bson:"description"`
-	URLAvatar   string `bson:"url"`
-	DevStatus   string `bson:"devstatus"`
+type CommentForFront struct {
+	Name      string
+	Comment   string
+	URLAvatar string
+	DevStatus string
 }
