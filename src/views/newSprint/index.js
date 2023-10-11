@@ -21,7 +21,7 @@ export const NewSprint = () => {
             <Wrapper>
                 <StyledPaper>
                     <Title>Sprint #{count + 1}</Title>
-                    <FormPost/>
+                    <FormPost count={count} setCount={setCount}/>
                 </StyledPaper>
             </Wrapper>
         </MainContainer>

@@ -45,7 +45,7 @@ const defaultComments = [
     },
 ];
 
-export const FormPost = () => {
+export const FormPost = ({count, setCount}) => {
     const [state, setState] = useState(defaultState);
     const [descriptions, setDescriptions] = useState(state.descriptions);
     const [comments, setComments] = useState(defaultComments);
@@ -113,6 +113,7 @@ export const FormPost = () => {
         await API.saveSprint(form);
         resetState();
         resetError();
+        setCount(count++);
     };
 
     const sendSprint = () => {
