@@ -14,8 +14,8 @@ export const DescriptionList = ({description}) => {
 const StyledList = styled(List)(() => ({
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "center",
     gap: "10px",
     flexGrow: "1",
     padding: "0",
-}))
+}));
