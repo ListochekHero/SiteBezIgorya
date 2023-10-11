@@ -138,7 +138,8 @@ export const FormPost = ({count, setCount}) => {
             </Input>
             <Subtitle>Descriptions:</Subtitle>
             {descriptions.map((item, id) => (
-                <ArrayInput value={item} onChange={onDescriptionChange} id={id} key={id} isError={isError}/>
+                <ArrayInput value={item} onChange={onDescriptionChange} id={id} key={id}
+                            isError={isError}>{id + 1}.</ArrayInput>
             ))}
             <FlexBox>
                 <MyButton onClick={addDescription}>
