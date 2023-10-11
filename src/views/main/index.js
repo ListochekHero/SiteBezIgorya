@@ -9,6 +9,7 @@ import {Loader} from "../../components/loader";
 export const Main = () => {
     const [cvs, setCvs] = useState([]);
     const [load, setLoad] = useState(false);
+    const [error, setError] = useState(false);
 
     const fetchCvs = async () => {
         return await API.getCVs();
@@ -17,6 +18,7 @@ export const Main = () => {
     const getCvs = (r) => {
         setCvs(r);
         setLoad(!!r);
+        setError(!r[0]);
     };
 
     useEffect(() => {
@@ -27,12 +29,12 @@ export const Main = () => {
     return (
         <MainContainer>
             <Wrapper>
-                {load ? cvs.map((card, id) => (
+                {load ? (error ? <IfError/> : cvs.map((card, id) => (
                     <InfoCard
                         props={card}
                         key={id}
                     />
-                )) : <Loader/>}
+                ))) : <Loader/>}
             </Wrapper>
         </MainContainer>
     );

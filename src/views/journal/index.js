@@ -3,10 +3,8 @@ import {Wrapper} from "../../components/wrapper";
 import {Sprint} from "./sprint";
 import {CommentList} from "./commentList";
 import {API} from "../../api";
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useState} from "react";
 import {PaginationBox} from "./pagination";
-import {logPlugin} from "@babel/preset-env/lib/debug";
-import {Box} from "@mui/material";
 import {IfError} from "../../components/ifError";
 import {Loader} from "../../components/loader";
 
@@ -15,6 +13,7 @@ export const Journal = () => {
     const [page, setPage] = useState(1);
     const [count, setCount] = useState();
     const [load, setLoad] = useState(false);
+    const [error, setError] = useState(false);
 
     const fetchCount = async () => await API.getCount();
     const fetchSprint = async (id) => await API.getSprint(id);
@@ -22,6 +21,7 @@ export const Journal = () => {
     const getSprint = (r) => {
         setSprint(r);
         setLoad(!!r);
+        setError(!r[0]);
     };
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export const Journal = () => {
 
     return (
         <MainContainer>
-            {load ? <Wrapper>
+            {load ? (error ? <IfError/> : <Wrapper>
                 <Sprint title={sprint.Title}
                         date={sprint.Date}
                         snapshotURL={sprint.SnapshotURL}
@@ -44,7 +44,7 @@ export const Journal = () => {
                         id={page}/>
                 <CommentList comments={sprint.Comments}/>
                 <PaginationBox setPage={setPage} count={count}/>
-            </Wrapper> : <Loader/>
+            </Wrapper>) : <Loader/>
             }
         </MainContainer>
     );
