@@ -4,6 +4,7 @@ import {API} from "../../api";
 import {Wrapper} from "../../components/wrapper";
 import {useEffect, useState} from "react";
 import {IfError} from "../../components/ifError";
+import {Loader} from "../../components/loader";
 
 export const Main = () => {
     const [cvs, setCvs] = useState([]);
@@ -31,7 +32,7 @@ export const Main = () => {
                         props={card}
                         key={id}
                     />
-                )) : <IfError/>}
+                )) : <Loader/>}
             </Wrapper>
         </MainContainer>
     );

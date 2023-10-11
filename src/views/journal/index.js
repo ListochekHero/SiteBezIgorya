@@ -8,6 +8,7 @@ import {PaginationBox} from "./pagination";
 import {logPlugin} from "@babel/preset-env/lib/debug";
 import {Box} from "@mui/material";
 import {IfError} from "../../components/ifError";
+import {Loader} from "../../components/loader";
 
 export const Journal = () => {
     const [sprint, setSprint] = useState([]);
@@ -43,7 +44,7 @@ export const Journal = () => {
                         id={page}/>
                 <CommentList comments={sprint.Comments}/>
                 <PaginationBox setPage={setPage} count={count}/>
-            </Wrapper> : <IfError/>
+            </Wrapper> : <Loader/>
             }
         </MainContainer>
     );
