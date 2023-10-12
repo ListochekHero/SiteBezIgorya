@@ -11,7 +11,7 @@ export const API = {
 
     getSprint: (id) => {
         const sprint = fetch(`${path}getSprint?id=${id}`)
-            .then(r => r.json(), () => [])
+            .then(r => r.json(), () => {})
             .catch(e => console.log(e));
 
         return sprint;

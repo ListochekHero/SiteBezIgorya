@@ -9,7 +9,7 @@ import {IfError} from "../../components/ifError";
 import {Loader} from "../../components/loader";
 
 export const Journal = () => {
-    const [sprint, setSprint] = useState([]);
+    const [sprint, setSprint] = useState({});
     const [page, setPage] = useState(1);
     const [count, setCount] = useState();
     const [load, setLoad] = useState(false);
@@ -21,7 +21,7 @@ export const Journal = () => {
     const getSprint = (r) => {
         setSprint(r);
         setLoad(!!r);
-        setError(!r[0]);
+        setError(!Object.keys(r).length);
     };
 
     useEffect(() => {
