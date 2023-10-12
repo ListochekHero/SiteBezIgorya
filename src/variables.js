@@ -11,10 +11,10 @@ export const colors = {
             contrastText: "#bcbcbc",
         },
         secondary: {
-            light: "#979797",
+            light: "#000000",
             main: "#b6bacb",
             dark: "#8f8d8f",
-            contrastText: "#4d6560",
+            contrastText: "#676c6c",
         },
         background: {
             paper: "#000000",
@@ -37,7 +37,7 @@ export const colors = {
             contrastText: "#4d6560",
         },
         secondary: {
-            light: "#474554",
+            light: "#323232",
             main: "#929296",
             dark: "#101010",
             contrastText: "#bcbcbc",

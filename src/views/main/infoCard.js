@@ -10,38 +10,41 @@ import {Description} from "../../components/UI/description";
 export const InfoCard = ({props}) => {
     return (
         <StyledCard>
-            <StyledAvatar
-                variant="rounded"
-                alt={props.Name}
-                src={props.URLAvatar}
-            />
-            <StyledBox>
-                <Title>{props.Name}</Title>
-                <Subtitle>{props.DevStatus}</Subtitle>
-                <Description align="justify">{props.Description}</Description>
-                <ButtonsWrapper>
-                    <StyledIcon href={props.CV} target="_blank">
-                        <RecentActorsIcon/>
-                    </StyledIcon>
-                    <StyledIcon href={props.GitHub} target="_blank">
-                        <GitHubIcon/>
-                    </StyledIcon>
-                    <StyledIcon href={props.Portfolio} target="_blank">
-                        <WorkIcon/>
-                    </StyledIcon>
-                    <StyledIcon href={props.Telegram} target="_blank">
-                        <TelegramIcon/>
-                    </StyledIcon>
-                </ButtonsWrapper>
-            </StyledBox>
+            <InfoBox display="flex" columnGap="20px">
+                <StyledAvatar
+                    variant="rounded"
+                    alt={props.Name}
+                    src={props.URLAvatar}
+                />
+                <StyledBox>
+                    <Title>{props.Name}</Title>
+                    <Subtitle>{props.DevStatus}</Subtitle>
+                    <Description align="justify">{props.Description}</Description>
+                </StyledBox>
+            </InfoBox>
+            <ButtonsWrapper>
+                <StyledIcon href={props.CV} target="_blank">
+                    <RecentActorsIcon/>
+                </StyledIcon>
+                <StyledIcon href={props.GitHub} target="_blank">
+                    <GitHubIcon/>
+                </StyledIcon>
+                <StyledIcon href={props.Portfolio} target="_blank">
+                    <WorkIcon/>
+                </StyledIcon>
+                <StyledIcon href={props.Telegram} target="_blank">
+                    <TelegramIcon/>
+                </StyledIcon>
+            </ButtonsWrapper>
         </StyledCard>
     );
 };
 
 const StyledCard = styled(Card)(() => ({
     display: "flex",
+    flexDirection: "column",
     justifyContent: "space-between",
-    rowGap: "5px",
+    rowGap: "20px",
     padding: "20px",
     maxWidth: "600px",
     minWidth: "480px",
@@ -51,6 +54,15 @@ const StyledCard = styled(Card)(() => ({
         width: "100%",
         minWidth: "auto",
         padding: "10px",
+        rowGap: "10px",
+    },
+}));
+
+const InfoBox = styled(Box)(() => ({
+    display: "flex",
+    columnGap: "20px",
+    "@media (max-width: 540px)": {
+        columnGap: "10px",
     },
 }));
 
@@ -69,7 +81,6 @@ const StyledBox = styled(Box)(() => ({
     flexDirection: "column",
     flexGrow: "1",
     justifyContent: "space-between",
-    marginLeft: "8px",
 }));
 
 const ButtonsWrapper = styled(Box)(() => ({
@@ -79,10 +90,15 @@ const ButtonsWrapper = styled(Box)(() => ({
 }));
 
 const StyledIcon = styled(IconButton)(({theme}) => ({
+    padding: "0",
     ">svg": {
         stroke: theme.palette.background.paper,
         fill: theme.palette.secondary.main,
+        ":hover": {
+            fill: theme.palette.secondary.contrastText,
+        }
     },
-    padding: "0",
-    marginTop: "10px",
+    ":hover": {
+        backgroundColor: theme.palette.secondary.light,
+    },
 }));
