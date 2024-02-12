@@ -15,8 +15,8 @@ export const Journal = () => {
     const [isLoad, setIsLoad] = useState(false);
     const [isError, setIsError] = useState(false);
 
-    const fetchCount = async () => await API.getCount();
-    const fetchSprint = async (id) => await API.getSprint(id);
+    const fetchCount = () => API.getCount();
+    const fetchSprint = (id) => API.getSprint(id);
 
     const getSprint = (r) => {
         setSprint(r);

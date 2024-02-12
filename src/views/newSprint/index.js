@@ -9,7 +9,7 @@ import {Title} from "../../components/UI/title";
 export const NewSprint = () => {
     const [count, setCount] = useState(0);
 
-    const fetchCount = async () => await API.getCount();
+    const fetchCount = () => API.getCount();
 
     useEffect(() => {
         fetchCount()

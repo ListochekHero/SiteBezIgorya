@@ -110,10 +110,14 @@ export const FormPost = ({count, setCount}) => {
     const onClick = async () => {
         form.append("snapshot", file);
         form.append("json", JSON.stringify(state));
-        await API.saveSprint(form);
-        resetState();
-        resetError();
-        setCount(count++);
+        try {
+            await API.saveSprint(form);
+            resetState();
+            resetError();
+            setCount(count++);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const sendSprint = () => {
