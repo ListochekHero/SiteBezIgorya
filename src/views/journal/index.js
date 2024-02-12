@@ -12,31 +12,29 @@ export const Journal = () => {
     const [sprint, setSprint] = useState({});
     const [page, setPage] = useState(1);
     const [count, setCount] = useState();
-    const [load, setLoad] = useState(false);
-    const [error, setError] = useState(false);
+    const [isLoad, setIsLoad] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     const fetchCount = async () => await API.getCount();
     const fetchSprint = async (id) => await API.getSprint(id);
 
     const getSprint = (r) => {
         setSprint(r);
-        setLoad(!!r);
-        setError(!Object.keys(r).length);
+        setIsError(!Object.keys(r).length);
     };
 
     useEffect(() => {
         fetchCount()
-            .then(r => setCount(r));
+            .then(r => setCount(r))
+            .then(() => setIsLoad(!isLoad));
     }, []);
 
-    useEffect(() => {
-        fetchSprint(page)
-            .then(r => getSprint(r));
-    }, [page]);
+    fetchSprint(page)
+        .then(r => getSprint(r));
 
     return (
         <MainContainer>
-            {load ? (error ? <IfError/> : <Wrapper>
+            {isLoad ? (isError ? <IfError/> : <Wrapper>
                 <Sprint title={sprint.Title}
                         date={sprint.Date}
                         snapshotURL={sprint.SnapshotURL}
